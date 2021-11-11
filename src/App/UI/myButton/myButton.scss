@@ -1,0 +1,78 @@
+.btn_1 {
+    width: 101px;
+    height: 38px;
+    background: #9F0013;
+    color: white;
+    font-size: 12px;
+    line-height: 16,41px;
+    clip-path: polygon(
+        0% 10px,     /* верхняя левая */
+        10px 0%,     /* верхняя левая */
+        100% 0%,    /* верхняя правая */
+        100% 5%,   /* верхняя правая */
+        100% 28px,  /* нижняя правая */
+        91px 100%,  /* нижняя правая */
+        0% 100%,   /* нижняя левая */
+        0 95%      /* нижняя левая */
+    );
+    border: none;
+    &:active {
+        background-color: #9f0013b0;
+    }
+    a {
+        text-decoration: none;
+        color: black;
+    }
+}
+
+.btn_2 {
+    width: 170px;
+    height: 38px;
+    background: #9F0013;
+    color: black;
+    font-size: 12px;
+    line-height: 16,41px;
+    clip-path: polygon(
+        0% 10px,     /* верхняя левая */
+        10px 0%,     /* верхняя левая */
+        100% 0%,    /* верхняя правая */
+        100% 5%,   /* верхняя правая */
+        100% 28px,  /* нижняя правая */
+        160px 100%,  /* нижняя правая */
+        0% 100%,   /* нижняя левая */
+        0 95%      /* нижняя левая */
+    );
+    border: none;
+    &:active {
+        border: 1px solid black;
+    }
+    a {
+        text-decoration: none;
+        color: black;
+    }
+}
+
+
+
+.loading {
+    @extend %animation;
+}
+
+%animation {
+    animation-name: pulseColor;
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+}
+
+@keyframes pulseColor {
+    0% {
+            background-color: #9F0013;
+    }
+    50% {
+            background-color: #df0202;
+    }
+    100% {
+            background-color: #9F0013;
+    }
+}
+

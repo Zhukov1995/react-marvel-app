@@ -1,0 +1,68 @@
+%animation {
+    animation-name: pulse;
+    animation-duration: 1.5s;
+    animation-iteration-count: infinite;
+}
+
+.selectCharacter {
+    width: 425px;
+    height: 294px;
+    padding: 25px;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.25);
+    box-sizing: border-box;
+    position: absolute;
+    top: 293px;
+    left: 675px;
+    opacity: 0.95;
+    h3 {
+        font-size: 18px;
+        line-height: 21px;
+        margin: 0;
+    }
+    .firstBlock {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 42px;
+        margin-bottom: 15px;
+        .circle {
+            width: 40px;
+            height: 40px;  
+            border-radius: 50%;
+            background-color: #C4C4C4; 
+            @extend %animation;
+        }
+        .firstLine {
+            width: 326px;
+            height: 16px;
+            margin-top: 12px;
+            background-color: #C4C4C4;
+            @extend %animation;
+        }
+    }
+    .mainBlock {
+        width: 375px;
+        height: 35px;
+        background-color: #C4C4C4;
+        margin-bottom: 15px;
+        @extend %animation;
+    }
+}
+
+.fixed {
+    position: fixed;
+    top: 0;
+    left: 970px;
+    background-color: white;
+}
+
+@keyframes pulse {
+    0% {
+            opacity: 0.6;
+    }
+    50% {
+            opacity: 1;
+    }
+    100% {
+            opacity: 0.6;
+    }
+}

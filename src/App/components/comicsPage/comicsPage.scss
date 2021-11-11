@@ -1,0 +1,9 @@
+.comicsPage {
+    .comicsCardList {
+        display: grid;
+        grid-template-columns: 225px 225px 225px 225px;
+        gap: 55px 67px; 
+        margin-top: 49px;
+        margin-bottom: 45px;
+    }
+}

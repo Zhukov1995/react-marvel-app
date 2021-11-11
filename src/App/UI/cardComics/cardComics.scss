@@ -1,0 +1,24 @@
+.cardComics {
+    width: 225px;
+    height: 397px;
+    box-sizing: border-box;
+    img {
+        min-width: 220px;
+        height: 346px;
+        filter: drop-shadow(5px 5px 10px rgba(0, 0, 0, 0.25));
+    }
+    .cardComics__title {
+        font-size: 14px;
+        line-height: 16px;
+        margin: 0;
+        padding-left: 4px;
+    }
+    .cardComics__price {
+        font-size: 14px;
+        line-height: 16px;
+        color: rgba(0, 0, 0, 0.6);
+        margin: 0;
+        margin-top: 10px;
+        padding-left: 4px;
+    }
+}

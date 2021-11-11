@@ -1,0 +1,73 @@
+.descriptionCharacter {
+    width: 425px;
+    height: 800px;
+    background-color: #FFFFFF;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.25);
+    box-sizing: border-box;
+    padding: 25px;
+    position: absolute;
+    top: 294px;
+    left: 675px;
+    opacity: 0.95;
+    .title {
+        width: 356px;
+        display: flex;
+        justify-content: space-between;
+        img {
+            width: 150px;
+            height: 150px;
+            margin-right: 25px;
+        }
+        .titleInfo {
+            width: 255px;
+            height: 150px;
+            position: relative;
+            h3 {
+                display: block;
+                width: 198px;
+                margin: 0;
+                font-size: 22px;
+                line-height: 26px;
+            }
+            .buttons {
+                position: absolute;
+                top: 65px;
+                left: 0;
+                
+            }
+        }
+    }
+    .description {
+        p {
+            display: block;
+            min-height: 120px;
+            font-size: 14px;
+            line-height: 16px;
+            margin-top: 15px;
+            margin-bottom: 10px;
+        }
+        h3 {
+            margin: 0;
+            font-size: 18px;
+            line-height: 21px;
+        }
+        ul {
+            list-style: none;
+            padding-left: 0;margin-bottom: 10px;
+            li {
+                display: block;
+                min-height: 25px;
+                background-color: #FFFFFF;
+                box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+                font-size: 14px;
+                line-height: 16px;
+                margin-bottom: 10px;
+                padding: 4px 0px 3px 10px;
+            }
+        }
+    }
+}
+
+.fixed {
+    position: fixed;
+}
