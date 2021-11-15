@@ -22,7 +22,7 @@ class HomePage extends Component {
         error: false,
         charDescription: {},
         loadingBtn: false,
-        listenScroll: ''
+        listenScroll: 0
     }
 
     marvelService = new MarvelService();
@@ -79,13 +79,15 @@ class HomePage extends Component {
     }
 
     listenerScroll = () => {
+        const {listenScroll} = this.state;
+        console.log(listenScroll)
         if (window.scrollY > 427) {
-            this.setState(({ listenScroll }) => ({
-                listenScroll: 'fixed'
+            this.setState(({listenScroll}) => ({
+                listenScroll: -427 + window.scrollY
             }))
         } else {
-            this.setState(({ listenScroll }) => ({
-                listenScroll: ''
+            this.setState(({listenScroll}) => ({
+                listenScroll: 0
             }))
         }
     }

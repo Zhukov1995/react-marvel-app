@@ -22,8 +22,12 @@ class Description extends Component {
 
         const NOT_COMICS = "Sorry,we didn't find any comics of this character...";
 
+        const style = {
+            marginTop: listenScroll
+        }
+
         return (
-            <div className={`descriptionCharacter ${listenScroll}`}>
+            <div className='descriptionCharacter' style={style}>
                 <div className="title">
                     <img src={thumbnail} alt={name} />
                     <div className='titleInfo'>
