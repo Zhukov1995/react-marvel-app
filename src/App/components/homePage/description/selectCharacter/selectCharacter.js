@@ -2,10 +2,10 @@ import './selectCharacter.scss';
 
 
 const SelectCharacter = (props) => {
-    const {fixedDescription} = props;
-    
+    const { listenScroll } = props;
+
     return (
-        <div className={`selectCharacter ${fixedDescription}`}>
+        <div className={`selectCharacter ${listenScroll}`}>
             <h3>Please select a character to see information</h3>
             <div className="firstBlock">
                 <div className="circle"></div>

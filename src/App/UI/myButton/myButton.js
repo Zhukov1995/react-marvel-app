@@ -12,7 +12,7 @@ const MyButton = (props) => {
             className={props.className}
             style={style}
             onClick={props.onClick}
-            disabled = {props.disabled}
+            disabled={props.disabled}
         >
             <a href={props.href}>{props.titleButton}</a>
         </button>

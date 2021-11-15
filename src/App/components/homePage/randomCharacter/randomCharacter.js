@@ -65,7 +65,7 @@ class RandomCharacter extends Component {
                         <h3>Do you want to get to know him better?</h3>
                     </div>
                     <h3>Or choose another one</h3>
-                    <MyButton titleButton='TRY IT' className='btn_1' onClick={() => this.updateCharacter()}/>
+                    <MyButton titleButton='TRY IT' className='btn_1' onClick={() => this.updateCharacter()} />
                     <div className="decoration">
                         <img className='shield' src={shield} alt="shield" />
                         <img className='mjolnir' src={mjolnir} alt="mjolnir" />

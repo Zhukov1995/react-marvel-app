@@ -30,6 +30,16 @@ class MarvelService {
         return this.transformResult(res.data.results[0]);
     }
 
+    getComics = async (offset = 600) => {
+        const res = await this.getResourse(`${this._apiBase}comics?limit=8&offset=${offset}&${this._apiKey}`)
+        return res.data.results.map(this.tranformComics)
+    }
+
+    getComicsById = async (id) => {
+        const res = await this.getResourse(`${this._apiBase}comics/${id}?${this._apiKey}`)
+        return this.tranformComics(res.data.results[0])
+    }
+
     transformResult = (char) => {
         const message = 'Sorry, this character has no description. You can read detailed information about him by clicking on the button...';
         return {
@@ -40,6 +50,18 @@ class MarvelService {
             wiki: char.urls[1].url,
             id: char.id,
             comics: char.comics.items
+        }
+    }
+
+    tranformComics = (comicsItem) => {
+        const message = 'Sorry, this character has no description. You can read detailed information about him by clicking on the button...';
+        return {
+            title: comicsItem.title,
+            pageCount: comicsItem.pageCount,
+            price: '$ ' + comicsItem.prices[0].price,
+            description: comicsItem.description || message,
+            thumbnail: comicsItem.thumbnail.path + '.' + comicsItem.thumbnail.extension,
+            id: comicsItem.id
         }
     }
 

@@ -13,6 +13,7 @@ import Error from '../../UI/error/error';
 import SelectCharacter from './description/selectCharacter/selectCharacter';
 import ErrorBoundary from '../../UI/errorBoundary/errorBpundary';
 
+
 class HomePage extends Component {
     state = {
         charList: [],
@@ -20,112 +21,114 @@ class HomePage extends Component {
         loading: true,
         error: false,
         charDescription: {},
-        fixedDescription: '',
         loadingBtn: false,
+        listenScroll: ''
     }
 
     marvelService = new MarvelService();
-    
+
     componentDidMount() {
         this.marvelService.getAllCharacters()
-        .then(this.loadingList)
-        .catch(this.errorList);
-        window.addEventListener('scroll', this.scrollTop);
+            .then(this.loadingList)
+            .catch(this.errorList);
+        window.addEventListener('scroll', this.listenerScroll);
     }
 
     componentWillUnmount() {
-        window.removeEventListener('scroll', this.scrollTop);
+        window.removeEventListener('scroll', this.listenerScroll);
     }
 
     getMoreCharacters = () => {
-        this.setState(({charCount,loadingBtn}) => ({
+        this.setState(({ charCount, loadingBtn }) => ({
             charCount: charCount + 9,
             loadingBtn: true
         }))
-        const {charCount} = this.state;
+        const { charCount } = this.state;
         this.marvelService.getMoreCharacters(charCount)
-        .then(this.changeList)
-        .catch(this.errorList);
+            .then(this.changeList)
+            .catch(this.errorList);
     }
 
     changeList = (newChar) => {
-        const {charList} = this.state;
-        const copy = [...charList,...newChar];
-        this.setState(() => ({ 
-            charList: copy ,
-            loadingBtn:false 
+        const { charList } = this.state;
+        const copy = [...charList, ...newChar];
+        this.setState(() => ({
+            charList: copy,
+            loadingBtn: false
         }));
     }
 
     loadingList = (charList) => {
         this.setState({
-                charList,
-                loading:false,
-            })
+            charList,
+            loading: false,
+        })
     }
 
     errorList = (error) => {
         this.setState({
-            loading:false,
-            error:true,
+            loading: false,
+            error: true,
         })
     }
-       
+
     activeDescription = (item) => {
         this.setState(() => ({
             charDescription: item,
         }))
     }
 
-    scrollTop = () => {
-        if(window.scrollY > 430) {
-            this.setState({
-                fixedDescription: 'fixed'
-            })
+    listenerScroll = () => {
+        if (window.scrollY > 427) {
+            this.setState(({ listenScroll }) => ({
+                listenScroll: 'fixed'
+            }))
         } else {
-            this.setState({
-                fixedDescription: ''
-            })
+            this.setState(({ listenScroll }) => ({
+                listenScroll: ''
+            }))
         }
     }
 
+
     render() {
-        const {charList,loading,error,charDescription,fixedDescription,loadingBtn} = this.state;
-    
-        const characterList = charList.map(item => {
-            return <CardCharacter src = {item.thumbnail} name = {item.name} key = {item.id} onClick={() => this.activeDescription(item)}/>
+        const { charList, loading, error, charDescription, loadingBtn, listenScroll } = this.state;
+
+        const characterList = charList.map((item, index) => {
+            return <CardCharacter src={item.thumbnail} name={item.name} key={item.id} tabIndex={index} onClick={() => this.activeDescription(item)} />
         })
 
         let checkedCharLength = Object.keys(charDescription).length;
 
         return (
             <div className="homePage">
-                <RandomCharacter/>
+                <RandomCharacter />
                 <div className="wrapperCharacters">
-                <div className="characters">
-                {characterList}
-                {loading ? <Spinner margin = '100px 290px'/> : null}
-                {error ? <Error margin ='100px 200px'width='250px' height='250px'/> : null}
-                
-                </div>
-                <MyButton 
-                        titleButton = 'LOAD MORE' 
-                        className = {loadingBtn ? 'btn_2 loading' : 'btn_2'} 
-                        display = 'block' 
-                        margin = '0px 240px 45px'
-                        onClick = {this.getMoreCharacters}
-                        disabled = {loadingBtn}
-                />
+                    <div className="characters">
+                        {characterList}
+                        {loading ? <Spinner margin='100px 290px' /> : null}
+                        {error ? <Error margin='100px 200px' width='250px' height='250px' /> : null}
+
+                    </div>
+                    <MyButton
+                        titleButton='LOAD MORE'
+                        className={loadingBtn ? 'btn_2 loading' : 'btn_2'}
+                        display='block'
+                        margin='0px 240px 45px'
+                        onClick={this.getMoreCharacters}
+                        disabled={loadingBtn}
+                    />
                 </div>
                 <ErrorBoundary>
-                    {checkedCharLength ? 
-                        <Description charDescription = {charDescription} fixedDescription = {fixedDescription}/>
-                         : 
-                        <SelectCharacter fixedDescription = {fixedDescription}/>
+                    {checkedCharLength ?
+                        <Description charDescription={charDescription} listenScroll={listenScroll} />
+                        :
+                        <SelectCharacter listenScroll={listenScroll} />
                     }
                 </ErrorBoundary>
-               
-                <img src ={bgImageBottom} alt='bgImageBottom' className = 'bgImage'/>
+
+
+                <img src={bgImageBottom} alt='bgImageBottom' className='bgImage' />
             </div>
         )
     }

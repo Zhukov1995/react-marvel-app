@@ -18,11 +18,12 @@ class Description extends Component {
 
     render() {
         const { name, description, thumbnail, homepage, wiki, comics } = this.props.charDescription;
-        const {fixedDescription} =this.props;
+        const { listenScroll } = this.props;
+
         const NOT_COMICS = "Sorry,we didn't find any comics of this character...";
 
         return (
-            <div className={`descriptionCharacter ${fixedDescription}`}>
+            <div className={`descriptionCharacter ${listenScroll}`}>
                 <div className="title">
                     <img src={thumbnail} alt={name} />
                     <div className='titleInfo'>

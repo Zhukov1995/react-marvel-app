@@ -1,0 +1,51 @@
+.comicsListItem {
+    margin-top: 50px;
+    margin-bottom: 150px;
+    position: relative;
+    display: flex;
+    justify-content:flex-start;
+    img {
+        width: 293px;
+        height: 450px;
+    };
+    .descriptionItem {
+        width: 550px;
+        margin-left: 50px;
+        h3 {
+            margin: 0;
+            font-size: 22px;
+            line-height: 26px;
+        }
+        p {
+           height: 120px;
+           margin: 0;
+           margin-top: 25px;
+        }
+        span {
+            display: block;
+            margin: 25px 0px 25px 0px;
+        }
+        .price {
+            font-size: 24px;
+            line-height: 28px;
+            font-weight: bold;
+            color: #9F0013;
+            padding-top: 5px;
+        }
+        button {
+            width: 106px;
+            height: 24px;
+            font-size: 18px;
+            line-height: 21px;
+            font-weight: bold;
+            position: absolute;
+            background-color: transparent;
+            border: none;
+            left: 1006px;
+            top: 0;
+            &:hover {
+                color: #b30116;
+            }
+        }
+    }
+}
